@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   lib,
@@ -10,7 +8,12 @@
   imports = [
     ./.config/hyprland/hyprland.nix
     ./.config/zsh.nix
+    ./.config/vscode.nix
+    
+    ./programs.nix
   ];
+
+  programs.home-manager.enable = true;
 
   nixpkgs = {
     overlays = [
@@ -43,15 +46,6 @@
     spotify
   ];
 
-  # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git.enable = true;
-  programs.firefox.enable = true;
-  programs.vscode.enable = true;
-  programs.alacritty.enable = true;
-  programs.wofi.enable = true;
-
-  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
   
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

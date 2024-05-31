@@ -6,11 +6,10 @@
   ...
 }: {
   imports = [
-    ./.config/hyprland/hyprland.nix
-    ./.config/zsh.nix
-    ./.config/vscode.nix
-    
-    ./programs.nix
+    ./modules/hyprland/hyprland.nix
+    ./modules/zsh.nix
+    ./modules/vscode.nix
+    ./modules/programs.nix
   ];
 
   programs.home-manager.enable = true;
@@ -44,6 +43,8 @@
     neofetch
     pfetch
     spotify
+
+    devenv
   ];
 
   systemd.user.startServices = "sd-switch";

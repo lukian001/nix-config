@@ -6,11 +6,11 @@
   ...
 }: {
   imports = [
-    ./.config/fonts.nix
-    
-    ./user.nix
     ./hardware-configuration.nix
-    ./programs.nix
+
+    ./modules/fonts.nix
+    ./modules/user.nix
+    ./modules/programs.nix
   ];
 
   networking.hostName = "luciLaptop";
@@ -108,15 +108,10 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
   services.openssh = {
     enable = true;
     settings = {
-      # Opinionated: forbid root login through SSH.
       PermitRootLogin = "no";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
       PasswordAuthentication = false;
     };
   };

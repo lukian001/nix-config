@@ -46,6 +46,7 @@
     spotify
     
     devenv
+    lunarvim
   ];
 
   systemd.user.startServices = "sd-switch";

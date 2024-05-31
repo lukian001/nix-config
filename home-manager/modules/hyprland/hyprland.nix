@@ -8,32 +8,29 @@
         enable = true;
         systemd.enable = true;
         settings = {
-        env = [
-            "BROWSER,librewolf"
-            "QT_IM_MODULE,fcitx"
-            "XMODIFIERS,@im=fcitx"
-            "SDL_IM_MODULE,fcitx"
-            "GLFW_IM_MODULE,ibus"
-            "SWWW_TRANSITION,grow"
-            "SWWW_TRANSITION_STEP,200"
-            "SWWW_TRANSITION_DURATION,1.5"
-            "SWWW_TRANSITION_FPS,240"
-            "SWWW_TRANSITION_WAVE,80,40"
-            "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-            "QT_QPA_PLATFORM,wayland;xcb"
-            "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-            "QT_QPA_PLATFORMTHEME,qt5ct"
-            "QT_STYLE_OVERRIDE,kvantum"
-        ];
+            env = [
+                "BROWSER,librewolf"
+                "QT_IM_MODULE,fcitx"
+                "XMODIFIERS,@im=fcitx"
+                "SDL_IM_MODULE,fcitx"
+                "GLFW_IM_MODULE,ibus"
+                "SWWW_TRANSITION,grow"
+                "SWWW_TRANSITION_STEP,200"
+                "SWWW_TRANSITION_DURATION,1.5"
+                "SWWW_TRANSITION_FPS,240"
+                "SWWW_TRANSITION_WAVE,80,40"
+                "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+                "QT_QPA_PLATFORM,wayland;xcb"
+                "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+                "QT_QPA_PLATFORMTHEME,qt5ct"
+                "QT_STYLE_OVERRIDE,kvantum"
+            ];
 
             exec-once  = [
                 "waybar"
             ];
             
-            monitor = [
-                "eDP-1, 1920x1080, auto, 1"
-                "HDMI-A-1, 2560x1440, auto, 1"
-            ];
+            monitor = ", highres, auto, 1";
 
             general = {
                 gaps_in = 1;

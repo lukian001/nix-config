@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
@@ -12,8 +11,6 @@
       ];
       
       description = "Lucian Streulea";
-
-      initialHashedPassword = "test";
 
       extraGroups = [ "networkmanager" "wheel"];
     };

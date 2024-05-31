@@ -6,10 +6,11 @@
   ...
 }: {
   imports = [
-    ./modules/hyprland/hyprland.nix
+    ./modules/programs.nix
+
+    ./modules/hyprland/default.nix
     ./modules/zsh.nix
     ./modules/vscode.nix
-    ./modules/programs.nix
   ];
 
   programs.home-manager.enable = true;
@@ -43,7 +44,7 @@
     neofetch
     pfetch
     spotify
-
+    
     devenv
   ];
 

@@ -25,20 +25,24 @@
   in {
     nixosConfigurations = {
       luciLaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = { inherit inputs outputs; };
         modules = [
-		./nixos/configuration.nix
-		nixos-hardware.nixosModules.asus-zephyrus-ga401
-	];
+          ./nixos/configuration.nix
+          
+          nixos-hardware.nixosModules.asus-zephyrus-ga401
+        ];
       };
     };
 
     homeConfigurations = {
       "lstreul@luciLaptop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [./home-manager/home.nix];
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+        extraSpecialArgs = { inherit inputs outputs; };
+
+        modules = [
+          ./home-manager/home.nix
+        ];
       };
     };
   };

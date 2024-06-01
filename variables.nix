@@ -2,7 +2,7 @@
   hostName = "luciLaptop";
   username = "lstreul";
   description = "Lucian Streulea";
-  homeDirectory = "/home/" + username;
+  homeDirectory = "/home/${toString(username)}";
 
   git = {
     username = "Lucian Streulea";

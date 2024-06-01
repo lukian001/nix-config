@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  variable = ../../variables.nix;
+  variable = ./../../variables.nix;
 in {
   programs = {
     nm-applet = {

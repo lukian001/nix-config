@@ -8,11 +8,7 @@
   variable = import ../variables.nix;
 in {
   imports = [
-    ./modules/programs.nix
-
-    ./modules/hyprland
-    ./modules/zsh.nix
-    ./modules/vscode.nix
+    ./modules
   ];
 
   programs.home-manager.enable = true;
@@ -40,6 +36,7 @@ in {
   home = {
     username = variable.username;
     homeDirectory = variable.homeDirectory;
+    stateVersion = variable.stateVersion;
   };
 
   home.packages = with pkgs; [
@@ -48,7 +45,6 @@ in {
     neofetch
     pfetch
     spotify
-    obsidian
     discord
 
     microsoft-edge
@@ -56,6 +52,4 @@ in {
   ];
 
   systemd.user.startServices = "sd-switch";
-  
-  home.stateVersion = variable.stateVersion;
 }

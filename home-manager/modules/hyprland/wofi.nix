@@ -6,8 +6,7 @@
 }: let
     themeConfig = import ./themes/themeConfig.nix;
 in {
-  programs = {
-    wofi = {
+  programs.wofi = {
       enable = true;
       
       style = ''

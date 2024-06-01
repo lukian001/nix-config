@@ -3,12 +3,20 @@
   config,
   pkgs,
   ...
-}: {
-    imports = [
-        ./lstreul.nix
-    ];
+}: let
+  variable = import ../variables.nix;
+in{
+  users.users = {
+    ${variable.username} = {
+      isNormalUser = true;
+      openssh.authorizedKeys.keys = [
+      ];
+      
+      description = variable.description;
 
-    users = {
-      defaultUserShell = pkgs.zsh; 
+      shell = pkgs.zsh;
+
+      extraGroups = [ "networkmanager" "wheel"];
     };
+  };
 }

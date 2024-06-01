@@ -9,13 +9,7 @@
 in {
   imports = [
     ./hardware-configuration.nix
-
-    ./modules/system/default.nix
-    ./modules/users/default.nix
-
-    ./modules/fonts.nix
-    
-    ./modules/programs.nix
+    ./modules
   ];
 
   networking.hostName = "luciLaptop";

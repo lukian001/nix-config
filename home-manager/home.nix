@@ -41,6 +41,8 @@
   };
 
   home.packages = with pkgs; [
+    kdePackages.polkit-kde-agent-1
+
     neofetch
     pfetch
     spotify

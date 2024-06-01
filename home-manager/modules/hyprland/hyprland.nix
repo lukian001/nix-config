@@ -12,6 +12,7 @@
             settings = {
                 exec-once  = [
                     "waybar"
+                    "polkit-kde-agent-1"
                     "nm-applet --indicator"
                     "dunst"
                 ];

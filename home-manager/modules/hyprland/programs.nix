@@ -5,11 +5,7 @@
   ...
 }: {
   programs = {
-    firefox = {
-      enable = true;
-    };
-
-    alacritty = {
+    wofi = {
       enable = true;
     };
   };

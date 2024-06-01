@@ -6,182 +6,113 @@
 }: {
     programs.waybar = {
         enable = true;
+        
+        # style = ''
+        #     #tray, #pulseaudio, #network, #battery,
+        #     #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
+        #         background:  #2e86c1 ;
+        #         font-weight: bold;
+        #         margin: 5px 0px;
+        #     }
+        #     #tray, #pulseaudio, #network, #battery{
+        #         color:  #27ae60;
+        #         border-radius: 10px 24px 10px 24px;
+        #         padding: 0 20px;
+        #         margin-left: 7px;
+        #     }
 
-        style = ''
-                * {
-                    font-family: "JetBrainsMono Nerd Font";
-                    font-size: 12pt;
-                    font-weight: bold;
-                    border-radius: 8px;
-                    transition-property: background-color;
-                    transition-duration: 0.5s;
-                }
-                @keyframes blink_red {
-                    to {
-                    background-color: rgb(242, 143, 173);
-                    color: rgb(26, 24, 38);
-                    }
-                }
-                .warning, .critical, .urgent {
-                    animation-name: blink_red;
-                    animation-duration: 1s;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
-                    animation-direction: alternate;
-                }
-                window#waybar {
-                    background-color: transparent;
-                }
-                window > box {
-                    margin-left: 5px;
-                    margin-right: 5px;
-                    margin-top: 5px;
-                    background-color: #1e1e2a;
-                    padding: 3px;
-                    padding-left:8px;
-                    border: 2px none #33ccff;
-                }
-            #workspaces {
-                    padding-left: 0px;
-                    padding-right: 4px;
-                }
-            #workspaces button {
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    padding-left: 6px;
-                    padding-right: 6px;
-                }
-            #workspaces button.active {
-                    background-color: rgb(181, 232, 224);
-                    color: rgb(26, 24, 38);
-                }
-            #workspaces button.urgent {
-                    color: rgb(26, 24, 38);
-                }
-            #workspaces button:hover {
-                    background-color: rgb(248, 189, 150);
-                    color: rgb(26, 24, 38);
-                }
-                tooltip {
-                    background: rgb(48, 45, 65);
-                }
-                tooltip label {
-                    color: rgb(217, 224, 238);
-                }
-            #custom-launcher {
-                    font-size: 20px;
-                    padding-left: 8px;
-                    padding-right: 6px;
-                    color: #7ebae4;
-                }
-            #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-                /* #mode { */
-                /* 	margin-left: 10px; */
-                /* 	background-color: rgb(248, 189, 150); */
-                /*     color: rgb(26, 24, 38); */
-                /* } */
-            #memory {
-                    color: rgb(181, 232, 224);
-                }
-            #cpu {
-                    color: rgb(245, 194, 231);
-                }
-            #clock {
-                    color: rgb(217, 224, 238);
-                }
-            /* #idle_inhibitor {
-                    color: rgb(221, 182, 242);
-                }*/
-            #custom-wall {
-                    color: #33ccff;
-                }
-            #temperature {
-                    color: rgb(150, 205, 251);
-                }
-            #backlight {
-                    color: rgb(248, 189, 150);
-                }
-            #pulseaudio {
-                    color: rgb(245, 224, 220);
-                }
-            #network {
-                    color: #ABE9B3;
-                }
-            #network.disconnected {
-                    color: rgb(255, 255, 255);
-                }
-            #custom-powermenu {
-                    color: rgb(242, 143, 173);
-                    padding-right: 8px;
-                }
-            #tray {
-                    padding-right: 8px;
-                    padding-left: 10px;
-                }
-            #mpd.paused {
-                    color: #414868;
-                    font-style: italic;
-                }
-            #mpd.stopped {
-                    background: transparent;
-                }
-            #mpd {
-                    color: #c0caf5;
-                }
-            #custom-cava-internal{
-                    font-family: "Hack Nerd Font" ;
-                    color: #33ccff;
-                }
-        '';
+        #     #workspaces {
+        #         background: #2e86c1 ;
+        #         margin: 5px 5px;
+        #         padding: 8px 5px;
+        #         border-radius: 16px;
+        #         color:#abb2b9;
+        #     }
 
-        settings = [{
-            "layer" = "top";
-            "position" = "top";
+        #     #workspaces button {
+        #         padding: 0px 5px;
+        #         margin: 0px 3px;
+        #         border-radius: 16px;
+        #         color: transparent;
+        #         background:  88, 214, 141;
+        #         transition: all 0.3s ease-in-out;
+        #     }
 
-            modules-left = [
-                "tray"
-                "memory"
-            ];
+        #     #workspaces button.active {
+        #         background-color:  #fbfcfc;
+        #         color:  #45b39d;
+        #         border-radius: 16px;
+        #         min-width: 50px;
+        #         background-size: 400% 400%;
+        #         transition: all 0.3s ease-in-out;
+        #     }
 
-            modules-center = [
-                "clock"
-            ];
+        #     #workspaces button:hover {
+        #         background-color: #45b39d ;
+        #         color:  #f39c12;
+        #         border-radius: 16px;
+        #         min-width: 50px;
+        #         background-size: 400% 400%;
+        #     }
 
-            modules-right = [
-                "network"
-            ];
+        #     #clock {
+        #         color:  #45b39d ;
+        #         background: #45b39d;
+        #         border-radius: 0px 0px 0px 40px;
+        #         padding: 10px 10px 15px 25px;
+        #         margin-left: 7px;
+        #         font-weight: bold;
+        #         font-size: 16px;
+        #     }
+        # '';
 
-            "tray" = {
-            "icon-size" = 15;
-            "spacing" = 5;
-            };
+        # settings = [{
+        #     position= "top";
+        #     layer= "top";
+        #     margin-top= 0;
+        #     margin-bottom= 0;
+        #     margin-left= 0;
+        #     margin-right= 0;
 
-            "memory" = {
-            "interval" = 1;
-            "format" = "󰻠 {percentage}%";
-            "states" = {
-                "warning" = 85;
-            };
-            };
+        #     modules-left = [
+        #         "clock"
+        #         "tray"
+        #     ];
 
-            "network" = {
-            "format-disconnected" = "󰯡 Disconnected";
-            "format-ethernet" = "󰒢 Connected!";
-            "format-linked" = "󰖪 {essid} (No IP)";
-            "format-wifi" = "󰖩 {essid}";
-            "interval" = 1;
-            "tooltip" = false;
-            };
+        #     modules-center = [
+        #         "hyprland/workspaces"
+        #     ];
 
-            "clock" = {
-            "interval" = 1;
-            "format" = "{:%I:%M %p  %A %b %d}";
-            "tooltip" = true;
-            "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>";
-            };
-        }];
+        #     modules-right = [
+        #     ];
+
+        #     clock= {
+        #         format = " {:%a, %d %b, %I:%M %p}";
+        #         tooltip= "true";
+        #         tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        #         format-alt= " {:%d/%m}";
+        #     };
+
+        #     tray = {
+        #         icon-size= 20;
+        #         spacing= 8;
+        #     };
+
+        #     "wlr/workspaces"= {
+        #         active-only= false;
+        #         all-outputs= false;
+        #         disable-scroll= false;
+        #         on-scroll-up= "hyprctl dispatch workspace e-1";
+        #         on-scroll-down= "hyprctl dispatch workspace e+1";
+        #         format = "{name}";
+        #         on-click= "activate";
+        #         format-icons= {
+        #             urgent= "";
+        #             active= "";
+        #             default = "";
+        #             sort-by-number= true;
+        #         };
+        #     };
+        # }];
     };
 }

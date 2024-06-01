@@ -10,42 +10,72 @@
             enable = true;
             systemd.enable = true;
             settings = {
-                env = [
-                    "BROWSER,librewolf"
-                    "QT_IM_MODULE,fcitx"
-                    "XMODIFIERS,@im=fcitx"
-                    "SDL_IM_MODULE,fcitx"
-                    "GLFW_IM_MODULE,ibus"
-                    "SWWW_TRANSITION,grow"
-                    "SWWW_TRANSITION_STEP,200"
-                    "SWWW_TRANSITION_DURATION,1.5"
-                    "SWWW_TRANSITION_FPS,240"
-                    "SWWW_TRANSITION_WAVE,80,40"
-                    "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-                    "QT_QPA_PLATFORM,wayland;xcb"
-                    "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-                    "QT_QPA_PLATFORMTHEME,qt5ct"
-                    "QT_STYLE_OVERRIDE,kvantum"
-                ];
-
                 exec-once  = [
                     "waybar"
+                    "nm-applet --indicator"
                     "dunst"
                 ];
                 
-                monitor = ", highres, auto, 1";
+                monitor = [
+                    "eDP-1, highres, auto, 1"
+                    "HDMI-A-1, 2560x1440, auto, 1"
+                ];
+
+                input = {
+                    kb_layout = "us";
+                    follow_mouse = true;
+                    force_no_accel = 1;
+                    touchpad = {
+                        natural_scroll = 1;
+                    };
+                };
 
                 general = {
                     gaps_in = 1;
                     gaps_out = 2;
                 };
 
+                decoration = {
+                    rounding = 2;
+                    shadow_ignore_window = true;
+                    drop_shadow = true;
+                    shadow_range = 50;
+                    shadow_render_power = 3;
+                };
+
+                animations = {
+                    enabled = true;
+                    bezier = [ "easeinoutsine, 0.37, 0, 0.63, 1" ];
+                    animation = [ 
+                        "windows,1,2,easeinoutsine,slide" 
+                        "border,1,10,default"
+                        "fade,1,1,default"
+                        "workspaces,1,2,easeinoutsine,slide"
+                    ];
+                };
+                
+                gestures = {
+                    workspace_swipe = true;
+                };
+
                 "$mod" = "SUPER";
+                bindm = [
+                    # Move and resize windows with mouse too
+                    "$mod, mouse:272, movewindow"
+                    "$mod SHIFT, mouse:272, resizewindow"
+                ];
+
                 bind = [
-                    "$mod, F, exec, firefox"
+                    "$mod SHIFT, Q, exit"
                     "$mod, Q, killactive"
-                    "$mod, D, exec, pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun}"
-                    "$mod, Return, exec, alacritty"			
+
+                    "$mod, F, exec, firefox"
+                    "$mod, E, exec, dolphin"
+                    "$mod, D, exec, pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun"
+                    "$mod, Return, exec, alacritty"
+
+                    "$mod, V, togglefloating"
+                    "$mod, F, fullscreen"
                 ] ++ (
                     builtins.concatLists (builtins.genList (
                         x: let

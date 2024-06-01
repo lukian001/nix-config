@@ -8,7 +8,7 @@
         enable = true;
 
         extensions = with pkgs.vscode-extensions; [
-            vscode.nix
+            bbenoist.nix
         ];
     };
 }

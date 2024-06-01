@@ -29,7 +29,7 @@
         modules = [
           ./nixos/configuration.nix
           
-          nixos-hardware.nixosModules.asus-zephyrus-ga401
+          nixos-hardware.nixosModules.common-gpu-nvidia-disable
         ];
       };
     };

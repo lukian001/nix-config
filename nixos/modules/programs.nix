@@ -4,8 +4,21 @@
   pkgs,
   ...
 }: {
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
-  programs.alacritty.enable = true;
-  programs.git.enable = true;
+  programs = {
+    hyprland = {
+      enable = true;
+    };
+
+    zsh = {
+      enable = true;
+    };
+
+    git = {
+      enable = true;
+    };
+
+    nm-applet = {
+      enable = true;
+    };
+  };
 }

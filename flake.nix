@@ -42,7 +42,6 @@
     };
 
     homeConfigurations = {
-      builtins.toString()
       "${toString (variable.username)}@${toString (variable.hostName)}" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 

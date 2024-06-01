@@ -16,9 +16,5 @@
     git = {
       enable = true;
     };
-
-    nm-applet = {
-      enable = true;
-    };
   };
 }

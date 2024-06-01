@@ -8,6 +8,6 @@
         ./hyprland.nix
         ./waybar.nix
         ./dunst.nix
-        ./programs.nix
+        ./wofi.nix
     ];
 }

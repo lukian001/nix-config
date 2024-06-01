@@ -4,11 +4,13 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  variable = import ../variables.nix;
+in {
   imports = [
     ./modules/programs.nix
 
-    ./modules/hyprland/default.nix
+    ./modules/hyprland
     ./modules/zsh.nix
     ./modules/vscode.nix
   ];
@@ -42,17 +44,18 @@
 
   home.packages = with pkgs; [
     kdePackages.polkit-kde-agent-1
-
+    
     neofetch
     pfetch
     spotify
-    
+    obsidian
+    discord
+
     devenv
     lunarvim
   ];
 
   systemd.user.startServices = "sd-switch";
   
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.11";
+  home.stateVersion = variable.stateVersion;
 }

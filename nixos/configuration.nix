@@ -4,7 +4,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let 
+  variable = import ../variables.nix;
+in {
   imports = [
     ./hardware-configuration.nix
 
@@ -62,5 +64,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = variable.stateVersion;
 }

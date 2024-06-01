@@ -1,118 +1,272 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-    programs.waybar = {
-        enable = true;
-        
-        # style = ''
-        #     #tray, #pulseaudio, #network, #battery,
-        #     #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
-        #         background:  #2e86c1 ;
-        #         font-weight: bold;
-        #         margin: 5px 0px;
-        #     }
-        #     #tray, #pulseaudio, #network, #battery{
-        #         color:  #27ae60;
-        #         border-radius: 10px 24px 10px 24px;
-        #         padding: 0 20px;
-        #         margin-left: 7px;
-        #     }
+{ config, ... }: let
+  themeConfig = import ./themes/themeConfig.nix;
+in {
+  services = {
+    blueman-applet.enable = true;
+    network-manager-applet.enable = true;
+  };
 
-        #     #workspaces {
-        #         background: #2e86c1 ;
-        #         margin: 5px 5px;
-        #         padding: 8px 5px;
-        #         border-radius: 16px;
-        #         color:#abb2b9;
-        #     }
+  programs.waybar = {
+    enable = true;
 
-        #     #workspaces button {
-        #         padding: 0px 5px;
-        #         margin: 0px 3px;
-        #         border-radius: 16px;
-        #         color: transparent;
-        #         background:  88, 214, 141;
-        #         transition: all 0.3s ease-in-out;
-        #     }
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        spacing = 0;
+        "margin-top" =
+          if themeConfig.theme.waybar.float then themeConfig.theme.gaps-out else 0;
+        "margin-left" =
+          if themeConfig.theme.waybar.float then themeConfig.theme.gaps-out else 0;
+        "margin-right" =
+          if themeConfig.theme.waybar.float then themeConfig.theme.gaps-out else 0;
+        height = 20;
+        modules-left = [ 
+          "tray"
+        ];
 
-        #     #workspaces button.active {
-        #         background-color:  #fbfcfc;
-        #         color:  #45b39d;
-        #         border-radius: 16px;
-        #         min-width: 50px;
-        #         background-size: 400% 400%;
-        #         transition: all 0.3s ease-in-out;
-        #     }
+        modules-center = [ 
+          "hyprland/workspaces" 
+        ];
 
-        #     #workspaces button:hover {
-        #         background-color: #45b39d ;
-        #         color:  #f39c12;
-        #         border-radius: 16px;
-        #         min-width: 50px;
-        #         background-size: 400% 400%;
-        #     }
+        modules-right = ["backlight" "pulseaudio" "battery" "clock" "custom/power" ];
 
-        #     #clock {
-        #         color:  #45b39d ;
-        #         background: #45b39d;
-        #         border-radius: 0px 0px 0px 40px;
-        #         padding: 10px 10px 15px 25px;
-        #         margin-left: 7px;
-        #         font-weight: bold;
-        #         font-size: 16px;
-        #     }
-        # '';
+        "wlr/taskbar" = {
+          format = "{icon}";
+          "on-click" = "activate";
+          "on-click-right" = "fullscreen";
 
-        # settings = [{
-        #     position= "top";
-        #     layer= "top";
-        #     margin-top= 0;
-        #     margin-bottom= 0;
-        #     margin-left= 0;
-        #     margin-right= 0;
+          "icon-size" = 25;
+          "tooltip-format" = "{title}";
+        };
+        "hyprland/window" = {
+          "format" = "{title:30}";
+          "max-length" = 30;
+          "separate-outputs" = true;
+        };
 
-        #     modules-left = [
-        #         "clock"
-        #         "tray"
-        #     ];
+        "hyprland/workspaces" = {
+          "on-click" = "activate";
+          format = "{icon}";
+          "format-icons" = {
+            "default" = "";
+            "1" = "1";
+            "2" = "2";
+            "3" = "3";
+            "4" = "4";
+            "5" = "5";
+            "6" = "6";
+            "7" = "7";
+            "8" = "8";
+            "9" = "9";
+            "active" = "󱓻";
+            "urgent" = "󱓻";
+          };
+          "persistent-workspaces" = {
+            "1" = [ ];
+            "2" = [ ];
+          };
+        };
 
-        #     modules-center = [
-        #         "hyprland/workspaces"
-        #     ];
+        tray = { 
+          spacing = 15; 
+          };
 
-        #     modules-right = [
-        #     ];
+        clock = {
+          "tooltip-format" = "<tt>{calendar}</tt>";
+          "format-alt" = "  {:%a, %d %b %Y}";
+          format = "󰥔  {:%I:%M %p}";
+        };
 
-        #     clock= {
-        #         format = " {:%a, %d %b, %I:%M %p}";
-        #         tooltip= "true";
-        #         tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        #         format-alt= " {:%d/%m}";
-        #     };
+        pulseaudio = {
+          format = "{icon}";
+          "format-bluetooth" = "󰂰";
+          nospacing = 1;
+          "tooltip-format" = "Volume : {volume}%";
+          "format-muted" = "󰝟";
+          "format-icons" = {
+            "headphone" = "";
+            "default" = [ "󰖀" "󰕾" "" ];
+          };
+          "on-click" = "pamixer -t";
+          "scroll-step" = 1;
+        };
 
-        #     tray = {
-        #         icon-size= 20;
-        #         spacing= 8;
-        #     };
+        battery = {
+          format = "{capacity}% {icon}";
+          "format-icons" = {
+            "charging" = [ "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅" ];
+            "default" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          };
+          "format-full" = "󰁹 ";
+          interval = 10;
+          states = {
+            warning = 20;
+            critical = 10;
+          };
+          tooltip = false;
+        };
 
-        #     "wlr/workspaces"= {
-        #         active-only= false;
-        #         all-outputs= false;
-        #         disable-scroll= false;
-        #         on-scroll-up= "hyprctl dispatch workspace e-1";
-        #         on-scroll-down= "hyprctl dispatch workspace e+1";
-        #         format = "{name}";
-        #         on-click= "activate";
-        #         format-icons= {
-        #             urgent= "";
-        #             active= "";
-        #             default = "";
-        #             sort-by-number= true;
-        #         };
-        #     };
-        # }];
+        "custom/power" = {
+          format = "󰤆";
+          tooltip = false;
+          on-click = "powermenu";
+        };
+
+        backlight = {
+          device = "nvidia_0";
+          format = "{icon}";
+          "format-icons" = [ " " " " "" "" "" "" "" "" "" ];
+        };
+      };
     };
+    style = ''
+      * {
+        border: none;
+        border-radius: 0;
+        min-height: 0;
+        font-family: "${themeConfig.theme.font}";
+        color: #${themeConfig.theme.colors.fg};
+        font-weight: 700;
+      }
+
+      window#waybar {
+        background-color: ${
+          if themeConfig.theme.waybar.transparent then
+            "rgba(0, 0, 0, 0)"
+          else
+            "#${themeConfig.theme.colors.bg}"
+        };
+        transition-property: background-color;
+        transition-duration: 0.5s;
+        border-radius: ${
+          if themeConfig.theme.waybar.float then
+            toString themeConfig.theme.rounding
+          else
+            "0"
+        }px;
+        font-size: 13px;
+      }
+
+      .modules-left, .modules-center, .modules-right {
+        border-radius: ${
+          if themeConfig.theme.waybar.float then
+            toString themeConfig.theme.rounding
+          else
+            "0"
+        }px;
+        background-color: #${themeConfig.theme.colors.bg};
+        padding: 2px 6px;
+      }
+
+      window#waybar.hidden {
+        opacity: 0.5;
+      }
+
+      #workspaces {
+        background-color: transparent;
+      }
+
+      #workspaces button {
+        all: initial; /* Remove GTK theme values (waybar #1351) */
+        min-width: 0; /* Fix weird spacing in materia (waybar #450) */
+        box-shadow: inset 0 -3px transparent; /* Use box-shadow instead of border so the text isn't offset */
+        padding: 6px 18px;
+        margin: 6px 3px;
+        border-radius: 4px;
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+      }
+
+      #workspaces button.active {
+        color: #${themeConfig.theme.colors.primary-fg};
+        background-color: #${themeConfig.theme.colors.primary-bg};
+      }
+
+      #workspaces button:hover {
+       box-shadow: inherit;
+       text-shadow: inherit;
+       opacity: 0.8;
+      }
+
+      #workspaces button.urgent {
+        background-color: #${themeConfig.theme.colors.color1};
+      }
+
+      #window > * {
+        font-family: "${themeConfig.theme.font-mono}";
+      }
+
+      #memory,
+      #custom-power,
+      #battery,
+      #backlight,
+      #pulseaudio,
+      #network,
+      #clock,
+      #tray,
+      #backlight{
+        border-radius: 9px;
+        margin: 6px 3px;
+        padding: 6px 12px;
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+      }
+
+      #tray menu {
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+      }
+
+      #custom-logo {
+        padding-right: 7px;
+        font-size: 15px;
+        color: #${themeConfig.theme.colors.primary-bg};
+      }
+
+      @keyframes blink {
+        to {
+          background-color: #f38ba8;
+          color: #181825;
+        }
+      }
+
+      #battery.warning,
+      #battery.critical,
+      #battery.urgent {
+        background-color: #ff0048;
+        color: #181825;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      #battery.charging {
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+        animation: none;
+      }
+
+      #custom-power {
+        background-color: #${themeConfig.theme.colors.primary-bg};
+        color: #${themeConfig.theme.colors.primary-fg};
+      }
+
+
+      tooltip {
+        border-radius: 8px;
+        padding: 15px;
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+      }
+
+      tooltip label {
+        padding: 5px;
+        background-color: #${themeConfig.theme.colors.alt-bg};
+        color: #${themeConfig.theme.colors.alt-fg};
+      }
+    '';
+  };
 }

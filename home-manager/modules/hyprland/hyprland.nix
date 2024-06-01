@@ -4,15 +4,18 @@
   pkgs,
   ...
 }: let 
-        rofiStart = import ./rofi.nix { inherit config pkgs lib; exportedScript = true; };
-    in{
+    themeConfig = import ./themes/themeConfig.nix;
+in {
         wayland.windowManager.hyprland = {
             enable = true;
+
             systemd.enable = true;
+
             settings = {
                 exec-once  = [
                     "waybar"
                     "polkit-kde-agent-1"
+                    "${pkgs.hyprpaper}/bin/hyprpaper"
                     "nm-applet --indicator"
                     "dunst"
                 ];
@@ -32,16 +35,28 @@
                 };
 
                 general = {
-                    gaps_in = 1;
-                    gaps_out = 2;
+                    resize_on_border = true;
+                    gaps_in = themeConfig.theme.gaps-in;
+                    gaps_out = themeConfig.theme.gaps-out;
+                    border_size = themeConfig.theme.border-size;
+                    "col.active_border" = "rgba(${themeConfig.theme.colors.primary-bg}ff)";
+                    "col.inactive_border" = "rgba(00000055)";
+                    border_part_of_window = true;
+                    layout = "master";
                 };
 
                 decoration = {
-                    rounding = 2;
-                    shadow_ignore_window = true;
+                    rounding = themeConfig.theme.rounding;
                     drop_shadow = true;
-                    shadow_range = 50;
+                    shadow_range = 20;
                     shadow_render_power = 3;
+                    "col.shadow" = "rgba(00000055)";
+                    blur = { enabled = false; };
+                };
+
+                master = {
+                    new_is_master = true;
+                    new_on_top = true;
                 };
 
                 animations = {
@@ -76,7 +91,7 @@
                     "$mod, Return, exec, alacritty"
 
                     "$mod, V, togglefloating"
-                    "$mod, F, fullscreen"
+                    "$mod SHIFT, F, fullscreen"
                 ] ++ (
                     builtins.concatLists (builtins.genList (
                         x: let

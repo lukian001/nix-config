@@ -12,6 +12,8 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = {

@@ -3,14 +3,16 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  variable = import ../variables.nix;
+in{
   users.users = {
-    lstreul = {
+    ${variable.username} = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
       ];
       
-      description = "Lucian Streulea";
+      description = variable.description;
 
       extraGroups = [ "networkmanager" "wheel"];
     };

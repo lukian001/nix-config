@@ -1,7 +1,8 @@
 {
   hostName = "luciLaptop";
   username = "lstreul";
-  homeDirectory = "/home/lstreul";
+  description = "Lucian Streulea";
+  homeDirectory = "/home/" + username;
 
   git = {
     username = "Lucian Streulea";

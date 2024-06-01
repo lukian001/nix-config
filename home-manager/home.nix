@@ -38,8 +38,8 @@ in {
   };
 
   home = {
-    username = "lstreul";
-    homeDirectory = "/home/lstreul";
+    username = variable.username;
+    homeDirectory = variable.homeDirectory;
   };
 
   home.packages = with pkgs; [
@@ -51,8 +51,8 @@ in {
     obsidian
     discord
 
+    microsoft-edge
     devenv
-    lunarvim
   ];
 
   systemd.user.startServices = "sd-switch";

@@ -21,9 +21,6 @@ in {
 
     git = {
       enable = true;
-
-      userName = variable.git.username;
-      userEmail = variable.git.email;
     };
   };
 }

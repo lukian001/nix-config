@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  variable = import ../variables.nix;
+  variable = import ../../../variables.nix;
 in{
   users.users = {
     ${variable.username} = {

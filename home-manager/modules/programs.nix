@@ -4,6 +4,13 @@
   pkgs,
   ...
 }: {
-    programs.firefox.enable = true;
-    programs.wofi.enable = true;
+  programs = {
+    firefox = {
+      enable = true;
+    };
+
+    wofi = {
+      enable = true;
+    };
+  };
 }

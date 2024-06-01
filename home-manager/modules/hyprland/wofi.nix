@@ -11,15 +11,15 @@ in {
       
       style = ''
         * {
-            font-family: "${themeConfig.theme.font}";
+            font-family: "${config.theme.font}";
             font-weight: 500;
             font-size: 12px;
         }
 
         #window {
-            background-color: #${themeConfig.theme.colors.alt-bg};
-            color: #${themeConfig.theme.colors.alt-fg};
-            border-radius: ${toString themeConfig.theme.rounding}px;
+            background-color: #${config.theme.colors.alt-bg};
+            color: #${config.theme.colors.alt-fg};
+            border-radius: ${toString config.theme.rounding}px;
         }
 
         #outer-box {
@@ -27,8 +27,8 @@ in {
         }
 
         #input {
-            background-color: #${themeConfig.theme.colors.bg};
-            border: 0px solid #${themeConfig.theme.colors.primary-bg};
+            background-color: #${config.theme.colors.bg};
+            border: 0px solid #${config.theme.colors.primary-bg};
             padding: 8px 12px;
         }
 
@@ -43,11 +43,11 @@ in {
         }
 
         #text {
-            color: #${themeConfig.theme.colors.color7};
+            color: #${config.theme.colors.color7};
         }
 
         #text:selected {
-            color: #${themeConfig.theme.colors.fg};
+            color: #${config.theme.colors.fg};
         }
 
         #entry {
@@ -55,8 +55,8 @@ in {
         }
 
         #entry:selected {
-            background-color: #${themeConfig.theme.colors.primary-bg};
-            color: #${themeConfig.theme.colors.primary-fg};
+            background-color: #${config.theme.colors.primary-bg};
+            color: #${config.theme.colors.primary-fg};
         }
 
         #unselected {}
@@ -65,7 +65,7 @@ in {
 
         #input,
         #entry:selected {
-            border-radius: ${toString (themeConfig.theme.rounding - 10)}px;
+            border-radius: ${toString (config.theme.rounding - 10)}px;
         }
     '';
 

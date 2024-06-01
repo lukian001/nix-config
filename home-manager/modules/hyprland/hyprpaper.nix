@@ -10,8 +10,8 @@ in {
 ];
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ~/.config/wallpapers/${themeConfig.theme.wallpaper}
-    wallpaper = ,~/.config/wallpapers/${themeConfig.theme.wallpaper}
+    preload = ~/.config/wallpapers/${config.theme.wallpaper}
+    wallpaper = ,~/.config/wallpapers/${config.theme.wallpaper}
     ipc=true
     splash=false
   '';

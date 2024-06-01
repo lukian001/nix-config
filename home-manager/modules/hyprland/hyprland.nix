@@ -81,6 +81,13 @@ in {
                     "$mod SHIFT, mouse:272, resizewindow"
                 ];
 
+                bindle = [
+                    ", XF86AudioRaiseVolume, exec, sound-up"
+                    ", XF86AudioLowerVolume, exec, sound-down"
+                    ", XF86MonBrightnessUp, exec, brightness-up"
+                    ", XF86MonBrightnessDown, exec, brightness-down"
+                ];
+                
                 bind = [
                     "$mod SHIFT, Q, exit"
                     "$mod, Q, killactive"

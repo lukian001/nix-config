@@ -5,6 +5,10 @@
   ...
 }: {
   programs = {
+    nm-applet = {
+      enable = true;
+    };
+
     hyprland = {
       enable = true;
     };

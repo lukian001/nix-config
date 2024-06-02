@@ -12,7 +12,7 @@ in {
     ./modules
   ];
 
-  networking.hostName = "luciLaptop";
+  networking.hostName = variable.hostName;
 
   nixpkgs = {
     overlays = [

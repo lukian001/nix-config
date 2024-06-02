@@ -2,7 +2,9 @@
   config, 
   ...
 ) :{
-  imports = [ ./config/template.nix ];
+  imports = [
+     ./template
+  ];
 
   theme = {
     font-mono = "FiraCode Nerd Font Mono";

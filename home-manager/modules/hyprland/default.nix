@@ -10,10 +10,10 @@ in {
     theme = themeConfig.theme;
   };
 
-    imports = [
-        ./hyprland.nix
-        ./waybar.nix
-        ./dunst.nix
-        ./wofi.nix
-    ];
+  imports = [
+      ./hyprland.nix
+      ./waybar.nix
+      ./dunst.nix
+      ./wofi.nix
+  ];
 }

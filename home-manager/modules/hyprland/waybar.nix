@@ -79,7 +79,7 @@ in {
         };
 
         pulseaudio = {
-          format = "{icon}";
+          format = "{volume}% {icon}";
           "format-bluetooth" = "󰂰";
           nospacing = 1;
           "tooltip-format" = "Volume : {volume}%";
@@ -114,7 +114,7 @@ in {
         };
 
         backlight = {
-          device = "nvidia_0";
+          device = "amdgpu_bl1";
           format = "{icon}";
           "format-icons" = [ " " " " "" "" "" "" "" "" "" ];
         };

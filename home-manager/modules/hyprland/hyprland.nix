@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let 
-    themeConfig = import ./themes/themeConfig.nix;
-in {
+}: {    
+        home.packages = with pkgs; [
+            kdePackages.polkit-kde-agent-1
+        ];
+
         wayland.windowManager.hyprland = {
             enable = true;
 
@@ -15,7 +17,6 @@ in {
                 exec-once  = [
                     "waybar"
                     "polkit-kde-agent-1"
-                    "${pkgs.hyprpaper}/bin/hyprpaper"
                     "nm-applet --indicator"
                     "dunst"
                 ];
@@ -36,17 +37,17 @@ in {
 
                 general = {
                     resize_on_border = true;
-                    gaps_in = themeConfig.theme.gaps-in;
-                    gaps_out = themeConfig.theme.gaps-out;
-                    border_size = themeConfig.theme.border-size;
-                    "col.active_border" = "rgba(${themeConfig.theme.colors.primary-bg}ff)";
+                    gaps_in = config.theme.gaps-in;
+                    gaps_out = config.theme.gaps-out;
+                    border_size = config.theme.border-size;
+                    "col.active_border" = "rgba(${config.theme.colors.primary-bg}ff)";
                     "col.inactive_border" = "rgba(00000055)";
                     border_part_of_window = true;
                     layout = "master";
                 };
 
                 decoration = {
-                    rounding = themeConfig.theme.rounding;
+                    rounding = config.theme.rounding;
                     drop_shadow = true;
                     shadow_range = 20;
                     shadow_render_power = 3;

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let 
-    variable = import ../../variable.nix; 
+    variable = import ../../variables.nix;
 in{
     programs.git = {
         enable = true;

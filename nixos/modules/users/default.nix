@@ -16,7 +16,7 @@ in{
 
       shell = pkgs.zsh;
 
-      extraGroups = [ "networkmanager" "wheel"];
+      extraGroups = [ "networkmanager" "wheel" "video" ];
     };
   };
 }

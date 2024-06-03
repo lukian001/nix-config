@@ -3,14 +3,10 @@
   config,
   pkgs,
   ...
-}: let
-  themeConfig = ./themes/themeConfig.nix;
-in {
-  config = {
-    theme = themeConfig.theme;
-  };
-
+}: {
   imports = [
+      ./themes/themeConfig.nix
+
       ./hyprland.nix
       ./waybar.nix
       ./dunst.nix

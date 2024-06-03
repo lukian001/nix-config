@@ -6,12 +6,6 @@
   ...
 }: {
     services = {
-        displayManager = {
-            sddm = {
-              enable = true;
-            };
-        };
-
         power-profiles-daemon = {
             enable = false;
         };
@@ -42,12 +36,6 @@
             xkb = {
                 layout = "us";
                 variant = "";
-            };
-
-            desktopManager = {
-                plasma5 = {
-                    enable = true;
-                };
             };
         };
     };

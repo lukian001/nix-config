@@ -96,5 +96,4 @@ in {
         key_exit = "Escape";
         };
     };
-  };
-}
+  }

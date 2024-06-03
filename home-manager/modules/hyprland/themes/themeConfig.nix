@@ -1,18 +1,18 @@
-(
+{
   config, 
   ...
-) :{
+} :{
   imports = [
      ./template
   ];
 
-  theme = {
+  config.theme = {
     font-mono = "FiraCode Nerd Font Mono";
     font = "SFProDisplay Nerd Font";
 
     wallpaper = "./wallpapers/Lofi-Computer.png";
 
-    rounding = 10;
+    rounding = 2;
     gaps-in = 2;
     gaps-out = 5;
     border-size = 1;

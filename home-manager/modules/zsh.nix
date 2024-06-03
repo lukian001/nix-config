@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-    variable = import ../variables.nix;
+    variable = import ../../variables.nix;
 in {
     programs.zsh = {
         enable = true;
@@ -12,16 +12,16 @@ in {
         syntaxHighlighting.enable = true;
 
         shellAliases = {
-            update-flake = "cd /nix-config && 
+            update-flake = "cd ~/nix-config && 
             git add . && 
             nix flake update";
 
-            update-home = "cd /nix-config && 
+            update-home = "cd ~/nix-config && 
             git add . && 
             home-manager switch --flake .#" + variable.username + 
             "@" + variable.hostName;
 
-            update-system = "cd /nix-config && 
+            update-system = "cd ~/nix-config && 
             git add . && 
             sudo nixos-rebuild switch --flake .#" + variable.hostName;
         };

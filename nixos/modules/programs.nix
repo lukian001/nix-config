@@ -9,11 +9,11 @@
       enable = true;
     };
 
-    hyprland = {
+    zsh = {
       enable = true;
     };
 
-    zsh = {
+    firefox = {
       enable = true;
     };
 

@@ -3,9 +3,7 @@
   config,
   pkgs,
   ...
-}: let
-    themeConfig = import ./themes/themeConfig.nix;
-in {
+}: {
   programs.wofi = {
       enable = true;
       

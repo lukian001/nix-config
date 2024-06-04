@@ -10,7 +10,7 @@
         settings = {
             global = {
                 follow = "mouse";
-                font = "Droid Sans 10";
+                font = config.theme.font;
                 format = "<b>%s</b>\\n%b";
                 frame_color = "#555555";
                 frame_width = 2;

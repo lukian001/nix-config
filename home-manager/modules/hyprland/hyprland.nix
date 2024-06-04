@@ -6,6 +6,7 @@
 }: {    
         home.packages = with pkgs; [
             kdePackages.polkit-kde-agent-1
+            swaybg
         ];
 
         wayland.windowManager.hyprland = {
@@ -15,6 +16,7 @@
 
             settings = {
                 exec-once  = [
+                    "swaybg -i ${toString (config.theme.wallpaper)}"
                     "waybar"
                     "polkit-kde-agent-1"
                     "nm-applet --indicator"
@@ -34,6 +36,9 @@
                         natural_scroll = 1;
                     };
                 };
+
+                windowrulev2 = [
+                ];
 
                 general = {
                     resize_on_border = true;
@@ -83,8 +88,8 @@
                 ];
 
                 bindle = [
-                    ", XF86AudioRaiseVolume, exec, sound-up"
-                    ", XF86AudioLowerVolume, exec, sound-down"
+                    ", XF86AudioRaiseVolume, exec, pamixer -i 10"
+                    ", XF86AudioLowerVolume, exec, pamixer -d 10"
                     ", XF86MonBrightnessUp, exec, brightness-up"
                     ", XF86MonBrightnessDown, exec, brightness-down"
                 ];

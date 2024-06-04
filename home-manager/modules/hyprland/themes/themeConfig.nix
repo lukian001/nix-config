@@ -10,7 +10,7 @@
     font-mono = "FiraCode Nerd Font Mono";
     font = "SFProDisplay Nerd Font";
 
-    wallpaper = "./wallpapers/Lofi-Computer.png";
+    wallpaper = "./themes/wallpapers/Lofi-Computer.png";
 
     rounding = 2;
     gaps-in = 2;

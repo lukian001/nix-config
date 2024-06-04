@@ -10,5 +10,6 @@
         ./zsh.nix
         ./vscode.nix
         ./git.nix
+        ./cava.nix
     ];
 }

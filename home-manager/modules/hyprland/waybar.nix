@@ -104,7 +104,6 @@ in {
             warning = 20;
             critical = 10;
           };
-          tooltip = false;
         };
 
         "custom/power" = {

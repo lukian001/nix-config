@@ -12,8 +12,8 @@
                 follow = "mouse";
                 font = config.theme.font;
                 format = "<b>%s</b>\\n%b";
-                frame_color = "#555555";
-                frame_width = 2;
+                frame_color = "${config.theme.colors.primary-bg}";
+                frame_width = config.theme.border-size;
                 geometry = "500x5-5+30";
                 horizontal_padding = 8;
                 icon_position = "off";
@@ -36,7 +36,7 @@
             urgency_normal = {
                 background = "#1d1f21";
                 foreground = "#70a040";
-                frame_color = "#70a040";
+                frame_color = "${config.theme.colors.primary-bg}";
                 timeout = 15;
             };
 

@@ -6,8 +6,18 @@
 }: {
     environment.systemPackages = with pkgs; [
         pamixer
-        acpi
+        networkmanagerapplet
     ];
+
+    services = {
+        xserver = {
+            desktopManager = {
+                gdm = {
+                    enable = true;
+                };
+            };
+        };
+    };
 
     programs = {
         light = {

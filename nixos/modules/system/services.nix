@@ -10,9 +10,13 @@
             enable = false;
         };
 
+        thermald = {
+            enable = true;
+        };
+
         tlp = {
             enable = true;
-            
+
             settings = {
                 CPU_SCALING_GOVERNOR_ON_AC = "powersave";
                 CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
@@ -32,7 +36,7 @@
 
         xserver = {
             enable = true;
-            
+
             xkb = {
                 layout = "us";
                 variant = "";

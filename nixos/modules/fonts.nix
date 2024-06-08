@@ -6,9 +6,13 @@
   ...
 }: {
     fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
-      inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
+      ( nerdfonts.override { 
+        fonts = [ 
+          "FiraCode" 
+          "JetBrainsMono" 
+        ]; 
+      } )
+      jetbrains-mono
       openmoji-color
   ];
 }

@@ -12,7 +12,7 @@ in {
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
+        position = "bottom";
         spacing = 0;
         "margin-top" =
           if config.theme.waybar.float then config.theme.gaps-out else 0;
@@ -22,14 +22,16 @@ in {
           if config.theme.waybar.float then config.theme.gaps-out else 0;
         height = 20;
         modules-left = [ 
+          "hyprland/workspaces"
           "tray"
         ];
 
         modules-center = [ 
-          "hyprland/workspaces" 
+          "clock" 
+          "battery"
         ];
 
-        modules-right = ["backlight" "pulseaudio" "battery" "clock" "custom/power" ];
+        modules-right = ["backlight" "pulseaudio" "custom/power" ];
 
         "wlr/taskbar" = {
           format = "{icon}";
@@ -62,9 +64,11 @@ in {
             "active" = "󱓻";
             "urgent" = "󱓻";
           };
+          
           "persistent-workspaces" = {
             "1" = [ ];
             "2" = [ ];
+            "3" = [ ];
           };
         };
 

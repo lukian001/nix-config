@@ -6,7 +6,7 @@
 }: {    
         home.packages = with pkgs; [
             kdePackages.polkit-kde-agent-1
-            swaybg
+            feh
         ];
 
         wayland.windowManager.hyprland = {
@@ -16,7 +16,7 @@
 
             settings = {
                 exec-once  = [
-                    "swaybg -i ${toString (config.theme.wallpaper)}"
+                    "wal -i ${config.theme.wallpaper}"
                     "waybar"
                     "polkit-kde-agent-1"
                     "nm-applet --indicator"
@@ -24,7 +24,7 @@
                 ];
                 
                 monitor = [
-                    "eDP-1, highres, auto, 1"
+                    "eDP-1, 1920x1080@60Hz, auto, 1"
                     "HDMI-A-1, 2560x1440, auto, 1"
                 ];
 
@@ -82,7 +82,6 @@
 
                 "$mod" = "SUPER";
                 bindm = [
-                    # Move and resize windows with mouse too
                     "$mod, mouse:272, movewindow"
                     "$mod SHIFT, mouse:272, resizewindow"
                 ];
@@ -90,8 +89,8 @@
                 bindle = [
                     ", XF86AudioRaiseVolume, exec, pamixer -i 10"
                     ", XF86AudioLowerVolume, exec, pamixer -d 10"
-                    ", XF86MonBrightnessUp, exec, brightness-up"
-                    ", XF86MonBrightnessDown, exec, brightness-down"
+                    ", XF86MonBrightnessUp, exec, light -A 10"
+                    ", XF86MonBrightnessDown, exec, light -U 10"
                 ];
                 
                 bind = [
